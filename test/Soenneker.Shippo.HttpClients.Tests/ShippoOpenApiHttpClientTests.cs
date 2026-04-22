@@ -1,20 +1,19 @@
 using Soenneker.Shippo.HttpClients.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Shippo.HttpClients.Tests;
 
-[Collection("Collection")]
-public sealed class ShippoOpenApiHttpClientTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public sealed class ShippoOpenApiHttpClientTests : HostedUnitTest
 {
     private readonly IShippoOpenApiHttpClient _httpclient;
 
-    public ShippoOpenApiHttpClientTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public ShippoOpenApiHttpClientTests(Host host) : base(host)
     {
         _httpclient = Resolve<IShippoOpenApiHttpClient>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
