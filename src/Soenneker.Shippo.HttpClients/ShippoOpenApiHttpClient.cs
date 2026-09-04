@@ -11,6 +11,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Shippo.HttpClients;
 
+/// <inheritdoc cref="IShippoOpenApiHttpClient" />
 public sealed class ShippoOpenApiHttpClient : IShippoOpenApiHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;
