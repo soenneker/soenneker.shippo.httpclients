@@ -30,7 +30,7 @@ public sealed class ShippoOpenApiHttpClient : IShippoOpenApiHttpClient
     {
         return _httpClientCache.Get(_cacheKey, (config: _config, baseUrl: _config["Shippo:ClientBaseUrl"] ?? _prodBaseUrl), static state =>
         {
-            var apiKey = state.config.GetValueStrict<string>("Shippo:ApiKey");
+            var apiKey = state.config.GetStringStrict("Shippo:ApiKey");
             string authHeaderName = state.config["Shippo:AuthHeaderName"] ?? "Authorization";
             string authHeaderValueTemplate = state.config["Shippo:AuthHeaderValueTemplate"] ?? "ShippoToken {token}";
             string authHeaderValue = authHeaderValueTemplate.Replace("{token}", apiKey, StringComparison.Ordinal);
